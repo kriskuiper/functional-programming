@@ -4,8 +4,9 @@
   "description": "Repo for the Functional Programming course of Information Design TT",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c --watch"
+    "build": "npm run build:js && npm run build:static",
+    "build:js": "rimraf build && rollup -c",
+    "build:static": "rsync -rm src/static build"
   },
   "repository": {
     "type": "git",
@@ -21,16 +22,13 @@
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "concurrently": "^5.0.0",
     "eslint": "^6.6.0",
+    "rimraf": "^3.0.0",
     "rollup": "^1.26.3",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-copy": "^3.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-scss": "^1.0.2",
-    "rollup-plugin-terser": "^5.1.2",
-    "sass": "^1.23.3"
+    "rollup-plugin-terser": "^5.1.2"
   },
   "dependencies": {
     "d3": "^5.12.0"
