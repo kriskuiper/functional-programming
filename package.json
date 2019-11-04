@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:js && npm run build:static",
     "build:js": "rimraf build && rollup -c",
-    "build:static": "rsync -rm src/static build"
+    "build:static": "rsync -rm --exclude '*.js' src/** build"
   },
   "repository": {
     "type": "git",
