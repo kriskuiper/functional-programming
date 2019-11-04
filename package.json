@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
-    "dev:watch": "rollup -c --watch",
-    "dev:css": "sass --watch src/styles/app.scss public/styles/app.css",
-    "dev": "concurrently \"npm run dev:watch\" \"npm run dev:css\""
+    "dev": "rollup -c --watch"
   },
   "repository": {
     "type": "git",
