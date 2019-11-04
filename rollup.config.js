@@ -5,17 +5,17 @@ import copy from 'rollup-plugin-copy'
 import { terser } from 'rollup-plugin-terser'
 
 export default {
-	input: './src/main.js',
+	input: 'src/main.js',
 	output: {
-		file: './build/scripts/bundle.js',
+		file: 'build/bundle.js',
 		format: 'iife',
 		name: 'bundle',
 	},
 	plugins: [
 		copy({
 			targets: [
-				{ src: 'public/index.html', dest: 'build/' },
-				{ src: 'public/styles/app.css', dest: 'build/styles' }
+				{ src: 'src/index.html', dest: 'build/' },
+				{ src: 'src/styles/app.css', dest: 'build/styles' }
 			],
 			hook: 'writeBundle',
 			copyOnce: true
@@ -24,7 +24,6 @@ export default {
 			exclude: 'node_modules/**'
 		}),
 		resolve({
-			jsnext: true,
 			main: true,
 			browser: true
 		}),
