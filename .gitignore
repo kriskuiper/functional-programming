@@ -4,3 +4,5 @@ node_modules
 # Exclude environment vars and dist folder
 .env
 build
+
+data
