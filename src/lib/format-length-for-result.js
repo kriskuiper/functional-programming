@@ -40,7 +40,6 @@ function replaceUnknownSize(size) {
 		: size
 }
 
-
 /*
 * Implemented using the following example:
 * https://www.freecodecamp.org/news/pipe-and-compose-in-javascript-5b04004ac937/
