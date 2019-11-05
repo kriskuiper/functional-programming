@@ -4,6 +4,3 @@ node_modules
 # Exclude environment vars and dist folder
 .env
 build
-
-# Exclude css maps
-**.css.map
