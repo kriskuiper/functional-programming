@@ -1,8 +1,9 @@
-/*
-* Returns the oppervlakte based on the sizes string
-* of a result
-* @param size: String, the size string of a result
-*/
+/**
+* formatLengthForResult: returns the length if available in a size,
+* otherwise returns an empty string.
+
+* @param size The full size string, something very dirty
+**/
 
 export default function(size) {
 	return format(
