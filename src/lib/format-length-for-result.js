@@ -2,7 +2,10 @@
 * formatLengthForResult: returns the length if available in a size,
 * otherwise returns an empty string.
 
-* @param size The full size string, something very dirty
+/**
+* @description Parses the size to a series of functions to format a size
+* @param {string} size The full size string, something very dirty
+* @returns a number that is the size or null if the size is neglected while formatting
 **/
 
 export default function(size) {
