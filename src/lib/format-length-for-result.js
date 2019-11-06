@@ -1,6 +1,13 @@
-/**
-* formatLengthForResult: returns the length if available in a size,
-* otherwise returns an empty string.
+import format from './format'
+import {
+	getFirstNumber,
+	getFirstNumberUnicode,
+	getFirstNumberFromLength,
+	getFirstNumberFromLengthUnicode,
+	startsWithNumber,
+	hasLength,
+	hasRemainingLetters
+} from './format-length-utils'
 
 /**
 * @description Parses the size to a series of functions to format a size
