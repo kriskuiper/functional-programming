@@ -13,7 +13,13 @@ export default function(size) {
 		textToLowerCase,
 		replaceUnknownSize,
 		fixCharacters,
-		replaceMathematicalCharacters
+		deleteSpaces,
+		checkFirstNumber,
+		checkLength,
+		replaceMathematicalCharacters,
+		resetRemainingSize,
+		trimWhiteSpace,
+		convertToNumber,
 	)(size)
 }
 
