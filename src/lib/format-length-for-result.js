@@ -23,6 +23,16 @@ export default function(size) {
 	)(size)
 }
 
+function textToLowerCase(size) {
+	return size.toLowerCase()
+}
+
+function replaceUnknownSize(size) {
+	return size === '[n.b.]' || size === '[ni]'
+		? ''
+		: size
+}
+
 function fixCharacters(size) {
 	return size
 		.replace(/[,]/g, '.')
@@ -34,28 +44,55 @@ function fixCharacters(size) {
 		.replace(/[:]/g, '')
 }
 
+
+function deleteSpaces(size) {
+	return size.replace(/\s/g, '')
+}
+
+function checkFirstNumber(size) {
+	if (startsWithNumber(size)) {
+		return format(
+			getFirstNumberUnicode,
+			getFirstNumber
+		)(size)
+	}
+
+	return size
+}
+
+function checkLength(size) {
+	if (hasLength(size)) {
+		return format(
+			getFirstNumberFromLengthUnicode,
+			getFirstNumberFromLength
+		)(size)
+	}
+
+	return size
+}
+
 function replaceMathematicalCharacters(size) {
 	return size
 		.replace(/[x]/g, '')
 		.replace(/cm/g, '')
 }
 
-function textToLowerCase(size) {
-	return size.toLowerCase()
+function resetRemainingSize(size) {
+	if (hasRemainingLetters(size)) {
+		return ''
+	}
+
+	return size
 }
 
-function replaceUnknownSize(size) {
-	return size === '[n.b.]' || size === '[ni]'
-		? ''
-		: size
+function trimWhiteSpace(size) {
+	return size.trim()
 }
 
-/*
-* Implemented using the following example:
-* https://www.freecodecamp.org/news/pipe-and-compose-in-javascript-5b04004ac937/
-*/
-function format(...functions) {
-	return (size) => functions.reduce((value, currentFunction) => {
-		return currentFunction(value)
-	}, size)
+function convertToNumber(size) {
+	if (size) {
+		return Number(size)
+}
+
+	return null
 }
