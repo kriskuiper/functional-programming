@@ -99,7 +99,7 @@ function trimWhiteSpace(size) {
 function convertToNumber(size) {
 	if (size) {
 		return Number(size)
-}
+	}
 
 	return null
 }
