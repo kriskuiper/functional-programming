@@ -20,12 +20,11 @@ export default function(size) {
 		textToLowerCase,
 		replaceUnknownSize,
 		fixCharacters,
-		deleteSpaces,
+		trimAllWhiteSpace,
 		checkFirstNumber,
 		checkLength,
 		replaceMathematicalCharacters,
 		resetRemainingSize,
-		trimWhiteSpace,
 		convertToNumber,
 	)(size)
 }
@@ -52,7 +51,7 @@ function fixCharacters(size) {
 }
 
 
-function deleteSpaces(size) {
+function trimAllWhiteSpace(size) {
 	return size.replace(/\s/g, '')
 }
 
@@ -90,10 +89,6 @@ function resetRemainingSize(size) {
 	}
 
 	return size
-}
-
-function trimWhiteSpace(size) {
-	return size.trim()
 }
 
 function convertToNumber(size) {
