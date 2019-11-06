@@ -25,8 +25,8 @@ export default function(size) {
 		replaceUnknownSize,
 		fixCharacters,
 		trimAllWhiteSpace,
-		checkFirstNumber,
-		checkLength,
+		checkFirstCharacter,
+		checkForLength,
 		replaceMathematicalCharacters,
 		resetRemainingSize,
 		convertToNumber,
@@ -59,7 +59,7 @@ function trimAllWhiteSpace(size) {
 	return size.replace(/\s/g, '')
 }
 
-function checkFirstNumber(size) {
+function checkFirstCharacter(size) {
 	if (startsWithNumber(size)) {
 		return format(
 			getFirstNumberUnicode,
@@ -70,7 +70,7 @@ function checkFirstNumber(size) {
 	return size
 }
 
-function checkLength(size) {
+function checkForLength(size) {
 	if (hasLength(size)) {
 		return format(
 			getFirstNumberFromLengthUnicode,
