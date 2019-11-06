@@ -16,6 +16,10 @@ import {
 **/
 
 export default function(size) {
+	if (!size) {
+		return
+	}
+
 	return format(
 		textToLowerCase,
 		replaceUnknownSize,
