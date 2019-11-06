@@ -2,8 +2,6 @@ import formatLengthForResult from './format-length-for-result'
 import formatYearForResult from './format-year-for-result'
 
 export default function(data) {
-	console.log(data)
-
 	return data
 		.map(item => ({
 			title: item.title && item.title.value,
@@ -14,4 +12,15 @@ export default function(data) {
 		.filter(item => {
 			return item.size !== null
 		})
+		.reduce((newItems, currentItem) => {
+			const hasYear = newItems[currentItem.year]
+
+			if (!hasYear) {
+				newItems[currentItem.year] = []
+			}
+
+			newItems[currentItem.year].push(currentItem)
+
+			return newItems
+		}, {})
 }
