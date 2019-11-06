@@ -1,6 +1,13 @@
 import formatLengthForResult from './format-length-for-result'
 import formatYearForResult from './format-year-for-result'
 
+/**
+@description beautifies raw ugly data
+@param {array} data raw data
+@returns {object} a newItems object with years as keys, each key has
+an array with results
+*/
+
 export default function(data) {
 	return data
 		.map(item => ({
