@@ -4,10 +4,8 @@
   "description": "Repo for the Functional Programming course of Information Design TT",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:js && npm run build:static",
-    "build:js": "rimraf build && rollup -c",
-    "build:static": "rsync -rm --exclude '*.js' src/** build",
-    "dev": "rollup -c --watch"
+    "build": "rollup -c",
+    "dev": "rsync -rm src/data public && rollup -c --watch"
   },
   "repository": {
     "type": "git",

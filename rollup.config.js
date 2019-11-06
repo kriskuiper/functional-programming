@@ -5,11 +5,11 @@ import json from 'rollup-plugin-json'
 import { terser } from 'rollup-plugin-terser'
 
 export default {
-	input: 'src/scripts/app.js',
+	input: 'src/app.js',
 	output: {
-		file: 'build/scripts/app.js',
+		file: 'public/scripts/bundle.js',
 		format: 'iife',
-		name: 'app',
+		name: 'bundle',
 	},
 	plugins: [
 		babel({
