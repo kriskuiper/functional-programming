@@ -1,4 +1,9 @@
-import results from './data/results'
-import cleanData from './lib/clean-data'
+import getCleanData from './lib/get-clean-data'
 
-console.log(cleanData(results.results.bindings))
+// Have to use an iife here because we can't use await without async
+(async () => {
+	const data = await getCleanData()
+
+	console.log(data)
+
+})()
