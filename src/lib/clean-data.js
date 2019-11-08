@@ -1,5 +1,5 @@
-import formatLengthForResult from './format-length-for-result'
-import formatYearForResult from './format-year-for-result'
+import formatLengthForResult from './formatters/format-length-for-result'
+import formatYearForResult from './formatters/format-year-for-result'
 
 /**
 @description beautifies raw ugly data
