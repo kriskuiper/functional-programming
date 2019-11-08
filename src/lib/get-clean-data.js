@@ -1,11 +1,14 @@
 import query from './query'
 import formatEncodedEndpoint from './formatters/format-encoded-endpoint'
 import cleanData from './clean-data'
+import Try from './try'
 
-export default async function() {
-	const endpoint = formatEncodedEndpoint(query)
-	const response = await fetch(endpoint)
-	const data = await response.json()
+export default function() {
+	return Try(async () => {
+		const endpoint = formatEncodedEndpoint(query)
+		const response = await fetch(endpoint)
+		const data = await response.json()
 
-	return cleanData(data.results.bindings)
+		return cleanData(data.results.bindings)
+	})
 }
