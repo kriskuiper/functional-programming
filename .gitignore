@@ -1,8 +1,5 @@
 # Node modules
 node_modules
 
-# Exclude environment vars and dist folder
+# Exclude environment vars
 .env
-public
-
-data
