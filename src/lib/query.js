@@ -14,5 +14,5 @@ export default `
 		?sub dct:extent ?size .
 		BIND (xsd:gYear(?date) AS ?year) .
 		FILTER (?year > xsd:gYear("1000")) .
-	} LIMIT 5000
+	} LIMIT 10000
 `
