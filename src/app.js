@@ -5,5 +5,4 @@ import getCleanData from './lib/get-clean-data'
 	const data = await getCleanData()
 
 	console.log(data)
-
 })()
