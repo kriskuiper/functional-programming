@@ -17,17 +17,57 @@ export default function(data) {
 			year: item.year && formatYearForResult(item.year.value)
 		}))
 		.filter(item => {
-			return item.size !== null
+			return !isNaN(item.year) // Counts for two items
 		})
 		.reduce((newItems, currentItem) => {
-			const hasYear = newItems[currentItem.year]
+			const minRange = getRangeMin(currentItem.year)
+			const maxRange = getRangeMax(currentItem.year)
+			let rangeKey = formatKey(minRange, maxRange)
 
-			if (!hasYear) {
-				newItems[currentItem.year] = []
+			/*
+			* If the year (1900) is now less then the min range (i.e. 1901), format
+			* the key again but then taking currentItem.year as the max so you get a
+			* rangeKey like "1801 - 1900", now you can safely put the currentitem in
+			* that range.
+			*/
+			if(currentItem.year < minRange) {
+				rangeKey = formatKey(
+					getRangeMinFromMax(currentItem.year),
+					currentItem.year
+				)
 			}
 
-			newItems[currentItem.year].push(currentItem)
+			const hasRange = newItems[rangeKey]
+
+			if(!hasRange) {
+				newItems[rangeKey] = {
+					results: [],
+					emptyResults: []
+				}
+			}
+
+			if (!currentItem.year) {
+				newItems[rangeKey].emptyResults.push(currentItem)
+			}
+
+			newItems[rangeKey].results.push(currentItem)
 
 			return newItems
 		}, {})
+}
+
+function getRangeMin(num) {
+	return (Math.floor(num / 100) * 100) + 1
+}
+
+function getRangeMax(num) {
+	return Math.ceil(num / 100) * 100
+}
+
+function getRangeMinFromMax(max) {
+	return max - 99
+}
+
+function formatKey(min, max) {
+	return `${min} - ${max}`
 }
