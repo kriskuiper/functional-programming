@@ -6,7 +6,7 @@ export default `
 	PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-	SELECT ?obj ?title ?img ?year ?size WHERE {
+	SELECT ?obj ?title (SAMPLE(?img) AS ?img) ?year (SAMPLE(?size) AS ?size) WHERE {
 		?sub dc:type ?obj .
 		?sub dc:title ?title .
 		?sub edm:isShownBy ?img .
