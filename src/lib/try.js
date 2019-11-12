@@ -1,6 +1,6 @@
 export default function(fn) {
 	try {
-		fn()
+		return fn()
 	} catch(error) {
 		console.error(error)
 	}
