@@ -1,13 +1,6 @@
 import formatLengthForResult from './formatters/format-length-for-result'
 import formatYearForResult from './formatters/format-year-for-result'
 
-/**
-@description beautifies raw ugly data
-@param {array} data raw data
-@returns {object} a newItems object with years as keys, each key has
-an array with results
-*/
-
 export default function(data) {
 	return data
 		.map(item => ({
@@ -17,7 +10,7 @@ export default function(data) {
 			year: item.year && formatYearForResult(item.year.value)
 		}))
 		.filter(item => {
-			return !isNaN(item.year) // Counts for two items
+			return !isNaN(item.year) // Deletes two items
 		})
 		.reduce((newItems, currentItem) => {
 			const minRange = getRangeMin(currentItem.year)
