@@ -1,0 +1,27 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('../assets/fonts/Roboto-Regular.ttf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../assets/fonts/Roboto-Bold.ttf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+body {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	color: #444;
+}
+
+.bar {
+	fill: #ffee58;
+}
+
+
