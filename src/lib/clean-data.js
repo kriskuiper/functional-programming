@@ -40,11 +40,9 @@ export default function(data) {
 				}
 			}
 
-			if (!currentItem.size) {
-				newItems[rangeKey].emptyResults.push(currentItem)
-			}
-
-			newItems[rangeKey].results.push(currentItem)
+			currentItem.size
+				? newItems[rangeKey].results.push(currentItem)
+				: newItems[rangeKey].emptyResults.push(currentItem)
 
 			return newItems
 		}, {})
