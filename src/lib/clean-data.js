@@ -7,7 +7,8 @@ export default function(data) {
 			title: item.title && item.title.value,
 			img: item.img && item.img.value,
 			size: item.size && formatLengthForResult(item.size.value),
-			year: item.year && formatYearForResult(item.year.value)
+			year: item.year && formatYearForResult(item.year.value),
+			category: item.subjectLabel && item.subjectLabel.value
 		}))
 		.filter(item => {
 			return !isNaN(item.year) // Deletes two items
@@ -39,7 +40,7 @@ export default function(data) {
 				}
 			}
 
-			if (!currentItem.year) {
+			if (!currentItem.size) {
 				newItems[rangeKey].emptyResults.push(currentItem)
 			}
 
