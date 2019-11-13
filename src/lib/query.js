@@ -6,13 +6,15 @@ export default `
 	PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-	SELECT ?obj ?title (SAMPLE(?img) AS ?img) ?year (SAMPLE(?size) AS ?size) WHERE {
+	SELECT ?obj ?title (SAMPLE(?img) AS ?img) ?year (SAMPLE(?size) AS ?size) ?subject ?subjectLabel WHERE {
 		?sub dc:type ?obj .
 		?sub dc:title ?title .
 		?sub edm:isShownBy ?img .
 		?sub dct:created ?date .
 		?sub dct:extent ?size .
+		?sub dc:subject ?subject .
+		?subject skos:prefLabel ?subjectLabel .
 		BIND (xsd:gYear(?date) AS ?year) .
 		FILTER (?year > xsd:gYear("1000")) .
-	} LIMIT 10000
+	} LIMIT 1000
 `
