@@ -13,11 +13,14 @@
 }
 
 body {
+	margin: 0;
+	padding: 4rem;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
-	color: #444;
+	color: white;
+	background-color: #263238;
 }
 
 .bar {
