@@ -1,9 +1,9 @@
-import * as d3 from 'd3'
+import { pack, select, hierarchy } from 'd3'
 
-// https://bl.ocks.org/alokkshukla/3d6be4be0ef9f6977ec6718b2916d168
+// source: https://bl.ocks.org/alokkshukla/3d6be4be0ef9f6977ec6718b2916d168
 // And then written it cleaner and more functional
 export default function(data, diameter = 600) {
-	const boundaries = d3.pack(data)
+	const boundaries = pack(data)
 		.size([diameter, diameter])
 		.padding(1.5)
 	const svg = createChartBlock(diameter)
@@ -15,7 +15,7 @@ export default function(data, diameter = 600) {
 }
 
 function createChartBlock(diameter) {
-	return d3.select('.bubble-chart')
+	return select('.bubble-chart')
 		.append('svg')
 		.attr('width', diameter)
 		.attr('height', diameter)
@@ -23,7 +23,7 @@ function createChartBlock(diameter) {
 }
 
 function setHierarchy(data) {
-	return d3.hierarchy(data)
+	return hierarchy(data)
 		.sum((d) => d.average)
 }
 
@@ -57,6 +57,6 @@ function createBubbleContents(bubble) {
 }
 
 function setFrameHeight(diameter) {
-	return d3.select(self.frameElement)
+	return select(self.frameElement)
 		.style('height', `${diameter}px`)
 }

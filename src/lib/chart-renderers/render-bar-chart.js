@@ -1,4 +1,4 @@
-import * as d3 from 'd3'
+import { select, scaleLinear, axisBottom, max } from 'd3'
 
 export default function(data, width = 800, height = 320) {
 	const padding = 50
@@ -13,21 +13,21 @@ export default function(data, width = 800, height = 320) {
 }
 
 function createChartBlock(selector, width, height) {
-	return d3.select(selector)
+	return select(selector)
 		.append('svg')
 		.attr('width', width)
 		.attr('height', height)
 }
 
 function calculateXScale(data, padding, width) {
-	return d3.scaleLinear()
-		.domain([0, d3.max(data, d => d.results.length)])
+	return scaleLinear()
+		.domain([0, max(data, d => d.results.length)])
 		.range([padding, width - padding])
 		.nice()
 }
 
 function addHorizontalAxis(svg, scale, height, padding, ticks) {
-	const horizontalAxis = d3.axisBottom(scale).ticks(ticks)
+	const horizontalAxis = axisBottom(scale).ticks(ticks)
 
 	return svg.append('g')
 		.attr('transform', `translate(50, ${height - padding})`)
