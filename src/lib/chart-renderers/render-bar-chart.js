@@ -41,7 +41,7 @@ function addHorizontalAxis(svg, scale, height, padding, ticks) {
 function addBars(data, svg, scale, padding) {
 	const barHeight = 15
 
-	svg.selectAll('rect')
+	return svg.selectAll('rect')
 		.data(data)
 		.enter()
 		.append('rect')
@@ -53,7 +53,7 @@ function addBars(data, svg, scale, padding) {
 }
 
 function addLabelsToBars(data, svg) {
-	svg.selectAll('text')
+	return svg.selectAll('text')
 		.data(data)
 		.enter()
 		.append('text')
