@@ -8,7 +8,7 @@ import renderBubbleChart from './lib/charts/render-bubble-chart'
 (async () => {
 	const data = await getCleanData()
 	const centuryResults = transformDataToCenturyResults(data)
-	const categoryResults = transformDataToCategories(data['2001 - 2100'].results)
+	const categoryResults = transformDataToCategories(data['1901 - 2000'].results)
 
 	renderBarChart(centuryResults)
 	renderBubbleChart(categoryResults)
