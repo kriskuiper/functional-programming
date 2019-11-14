@@ -13,38 +13,39 @@ export default function(data) {
 		.filter(item => {
 			return !isNaN(item.year) // Deletes two items
 		})
-		.reduce((newItems, currentItem) => {
-			const minRange = getRangeMin(currentItem.year)
-			const maxRange = getRangeMax(currentItem.year)
-			let rangeKey = formatKey(minRange, maxRange)
+		.reduce((centuries, currentItem) => {
+			const min = getRangeMin(currentItem.year)
+			const max = getRangeMax(currentItem.year)
+			let range = formatRange(min, max)
+			const defaultItem = {
+				results: [],
+				emptyResults: []
+			}
 
 			/*
 			* If the year (1900) is now less then the min range (i.e. 1901), format
-			* the key again but then taking currentItem.year as the max so you get a
-			* rangeKey like "1801 - 1900", now you can safely put the currentitem in
+			* the range again but then taking currentItem.year as the max so you get a
+			* range like "1801 - 1900", now you can safely put the currentitem in
 			* that range.
 			*/
-			if(currentItem.year < minRange) {
-				rangeKey = formatKey(
-					getRangeMinFromMax(currentItem.year),
-					currentItem.year
-				)
+
+			if(currentItem.year < min) {
+				range = formatRangeFromMax(currentItem.year)
 			}
 
-			const hasRange = newItems[rangeKey]
+			let century = centuries[range]
 
-			if(!hasRange) {
-				newItems[rangeKey] = {
-					results: [],
-					emptyResults: []
-				}
+			if(!century) {
+				century = defaultItem
 			}
 
-			currentItem.size
-				? newItems[rangeKey].results.push(currentItem)
-				: newItems[rangeKey].emptyResults.push(currentItem)
+			if (currentItem.size) {
+				addCurrentItemToResults(century.results)
+			} else {
+				addCurrentItemToResults(century.emptyResults)
+			}
 
-			return newItems
+			return centuries
 		}, {})
 }
 
@@ -60,6 +61,14 @@ function getRangeMinFromMax(max) {
 	return max - 99
 }
 
-function formatKey(min, max) {
+function formatRange(min, max) {
 	return `${min} - ${max}`
+}
+
+function formatRangeFromMax(max) {
+	return formatRange(getRangeMinFromMax(max), max)
+}
+
+function addCurrentItemToResults(results, item) {
+	return results.push(item)
 }
