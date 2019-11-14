@@ -1,5 +1,5 @@
 import format from '../format'
-import ifValue from '../if-value'
+import ifValue from '../functional-helpers/if-value'
 import {
 	getFirstNumber,
 	getFirstNumberUnicode,
