@@ -13,5 +13,3 @@ import renderBubbleChart from './lib/charts/render-bubble-chart'
 	renderBarChart(centuryResults)
 	renderBubbleChart(categoryResults)
 })()
-
-
