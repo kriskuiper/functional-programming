@@ -6,10 +6,14 @@ export default function(results) {
 		.key(result => result.category)
 		.entries(results)
 
-	return newData.map(item => ({
+	const dataWithAverage = newData.map(item => ({
 		...item,
 		average: formatAverageLength(item.values)
 	}))
+
+	return {
+		children: dataWithAverage
+	}
 }
 
 function formatAverageLength(results) {
