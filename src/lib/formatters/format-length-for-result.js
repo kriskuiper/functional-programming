@@ -85,5 +85,5 @@ function resetRemainingSize(size) {
 }
 
 function convertToNumber(size) {
-	return ifValue(size, Number(size), null)
+	return ifValue(size, () => Number(size), null)
 }
