@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-export default function(data, width = 1000, height = 500) {
+export default function(data, width = 800, height = 490) {
 	const padding = 50
 	const ticks = 6
 
@@ -24,6 +24,7 @@ function calculateXScale(data, padding, width) {
 	return d3.scaleLinear()
 		.domain([0, d3.max(data, d => d.results.length)])
 		.range([padding, width - padding])
+		.nice()
 }
 
 function addHorizontalAxis(svg, scale, height, padding, ticks) {
@@ -57,9 +58,10 @@ function addBars(data, svg, scale, padding) {
 		.append('rect')
 		.attr('x', padding * 2)
 		.attr('y', (d, i) => i * 50)
-		.attr('width', (d) => scale(d.results.length - 40))
+		.attr('width', (d) => scale(d.results.length - padding))
 		.attr('height', barHeight)
 		.attr('class', 'bar-chart__bar')
+		.attr('fill', '#ffff72')
 }
 
 function addLabelsToBars(data, svg) {
