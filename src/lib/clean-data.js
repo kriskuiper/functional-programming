@@ -33,16 +33,16 @@ export default function(data) {
 				range = formatRangeFromMax(currentItem.year)
 			}
 
-			let century = centuries[range]
+			const hasRange = centuries[range]
 
-			if(!century) {
-				century = defaultItem
+			if(!hasRange) {
+				centuries[range] = defaultItem
 			}
 
 			if (currentItem.size) {
-				addCurrentItemToResults(century.results)
+				addCurrentItemToResults(centuries[range].results, currentItem)
 			} else {
-				addCurrentItemToResults(century.emptyResults)
+				addCurrentItemToResults(centuries[range].emptyResults, currentItem)
 			}
 
 			return centuries
