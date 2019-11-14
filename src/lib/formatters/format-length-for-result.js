@@ -1,4 +1,5 @@
 import format from '../format'
+import ifValue from '../if-value'
 import {
 	getFirstNumber,
 	getFirstNumberUnicode,
@@ -56,25 +57,21 @@ function trimAllWhiteSpace(size) {
 }
 
 function checkFirstCharacter(size) {
-	if (startsWithNumber(size)) {
+	return ifValue(startsWithNumber(size), () => {
 		return format(
 			getFirstNumberUnicode,
 			getFirstNumber
 		)(size)
-	}
-
-	return size
+	}, size)
 }
 
 function checkForLength(size) {
-	if (hasLength(size)) {
+	return ifValue(hasLength(size), () => {
 		return format(
 			getFirstNumberFromLengthUnicode,
 			getFirstNumberFromLength
 		)(size)
-	}
-
-	return size
+	}, size)
 }
 
 function replaceMathematicalCharacters(size) {
@@ -84,17 +81,9 @@ function replaceMathematicalCharacters(size) {
 }
 
 function resetRemainingSize(size) {
-	if (hasRemainingLetters(size)) {
-		return ''
-	}
-
-	return size
+	return ifValue(hasRemainingLetters(size), () => '', size)
 }
 
 function convertToNumber(size) {
-	if (size) {
-		return Number(size)
-	}
-
-	return null
+	return ifValue(size, Number(size), null)
 }
