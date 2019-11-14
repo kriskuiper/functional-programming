@@ -1,8 +1,8 @@
 import getCleanData from './lib/get-clean-data'
 import transformDataToCenturyResults from './lib/transformers/transform-data-to-century-results'
 import transformDataToCategories from './lib/transformers/transform-data-to-categories'
-import renderBarChart from './lib/chart/render-bar-chart'
-import renderBubbleChart from './lib/chart/render-bubble-chart'
+import renderBarChart from './lib/charts/render-bar-chart'
+import renderBubbleChart from './lib/charts/render-bubble-chart'
 
 // Have to use an iife here because we can't use await without async
 (async () => {
