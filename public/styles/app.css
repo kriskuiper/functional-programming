@@ -23,8 +23,20 @@ body {
 	background-color: #263238;
 }
 
-.bar {
-	fill: #ffee58;
+.bar-chart__bar,
+.bubble-chart__bubble {
+	fill: #fbc02d;
 }
 
+.bubble__text {
+	fill: #263238;
+}
 
+.bar-chart__bar:hover,
+.bubble-chart__bubble:hover .bubble-chart__bubble-circle {
+	fill: #fff263
+}
+
+.bar-chart__label {
+	fill: white;
+}
