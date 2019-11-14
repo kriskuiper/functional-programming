@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-export default function(data, width = 500, height = 360) {
+export default function(data, width = 800, height = 320) {
 	const padding = 50
 	const ticks = 6
 
@@ -8,7 +8,6 @@ export default function(data, width = 500, height = 360) {
 	const scale = calculateXScale(data, padding, width)
 
 	addLabelsToBars(data, svg)
-	addGridLinesToHorizontalAxis(svg, height, scale)
 	addHorizontalAxis(svg, scale, height, padding, ticks)
 	addBars(data, svg, scale, padding)
 }
@@ -37,18 +36,6 @@ function addHorizontalAxis(svg, scale, height, padding, ticks) {
 		.call(g => g.select('.domain').remove())
 }
 
-function addGridLinesToHorizontalAxis(svg, height, scale) {
-	return svg.append('g')
-		.attr('class', 'bar-chart__x-axis-grid')
-		.attr('transform', `translate(50, ${height - 45})`)
-		.attr('stroke', 'grey')
-		.call(
-			createGridLines(scale)
-				.tickSize(-height)
-				.tickFormat('')
-		)
-}
-
 function addBars(data, svg, scale, padding) {
 	const barHeight = 15
 
@@ -57,11 +44,10 @@ function addBars(data, svg, scale, padding) {
 		.enter()
 		.append('rect')
 		.attr('x', padding * 2)
-		.attr('y', (d, i) => i * 50)
+		.attr('y', (d, i) => i * 30)
 		.attr('width', (d) => scale(d.results.length - padding))
 		.attr('height', barHeight)
 		.attr('class', 'bar-chart__bar')
-		.attr('fill', '#ffff72')
 }
 
 function addLabelsToBars(data, svg) {
@@ -71,12 +57,9 @@ function addLabelsToBars(data, svg) {
 		.append('text')
 		.text((d) => d.century)
 		.attr('x', 0)
-		.attr('y', (d, i) => (i * 50) + 10)
+		.attr('y', (d, i) => (i * 30) + 10)
 		.attr('dy', 0)
 		.attr('text-anchor', 'end')
 		.attr('transform', 'translate(90, 3)')
-}
-
-function createGridLines(scale, ticks) {
-	return d3.axisBottom(scale).ticks(ticks)
+		.attr('class', 'bar-chart__label')
 }

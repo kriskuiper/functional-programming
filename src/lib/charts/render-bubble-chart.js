@@ -33,30 +33,27 @@ function createBubble(svg, hierarchy, boundaries) {
 		.enter()
 		.filter((d) => !d.children)
 		.append('g')
-		.attr('class', 'bubble')
+		.attr('class', 'bubble-chart__bubble')
 		.attr('transform', (d) => `translate(${d.x}, ${d.y})`)
 }
 
-function createBubbleContents(bubble, color) {
-	bubble.append('title')
-		.text((d) => `${d.key}: ${d.average}`)
-
+function createBubbleContents(bubble) {
 	bubble.append('circle')
 		.attr('r', (d) => d.r)
-		.style('fill', 'yellow')
+		.attr('class', 'bubble-chart__bubble-circle')
 
 	bubble.append('text')
 		.attr('dy', '.2em')
 		.style('text-anchor', 'middle')
 		.text((d) => d.data.key.substring(0, d.r / 3))
 		.attr('font-size', (d) => d.r / 4)
-		.attr('fill', 'black')
+		.attr('class', 'bubble__text')
 
 	bubble.append('text')
-		.attr('dy', '1.3em')
+		.attr('dy', '2em')
 		.style('text-anchor', 'middle')
 		.text((d) => d.data.average)
-		.attr('fill', 'black')
+		.attr('class', 'bubble__text')
 }
 
 function setFrameHeight(diameter) {
