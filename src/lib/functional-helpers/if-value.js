@@ -5,6 +5,5 @@ export default function (value, fn, alternative) {
 		return alternative
 	}
 
-	// Nothing is literally defined so this would suffice
-	return undefined
+	return ''
 }
