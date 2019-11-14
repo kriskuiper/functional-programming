@@ -10,6 +10,8 @@ export default function(data, width = 800, height = 320) {
 	addLabelsToBars(data, svg)
 	addHorizontalAxis(svg, scale, height, padding, ticks)
 	addBars(data, svg, scale, padding)
+
+	return svg
 }
 
 function createChartBlock(selector, width, height) {

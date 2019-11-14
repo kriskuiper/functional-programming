@@ -12,6 +12,8 @@ export default function(data, diameter = 600) {
 
 	createBubbleContents(bubble)
 	setFrameHeight(diameter)
+
+	return svg
 }
 
 function createChartBlock(diameter) {
