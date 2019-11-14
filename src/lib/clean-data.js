@@ -17,7 +17,7 @@ export default function(data) {
 			const min = getRangeMin(currentItem.year)
 			const max = getRangeMax(currentItem.year)
 			let range = formatRange(min, max)
-			const defaultItem = {
+			const defaultCentury = {
 				results: [],
 				emptyResults: []
 			}
@@ -36,7 +36,7 @@ export default function(data) {
 			const hasRange = centuries[range]
 
 			if(!hasRange) {
-				centuries[range] = defaultItem
+				centuries[range] = defaultCentury
 			}
 
 			if (currentItem.size) {
