@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-export default function(data, width = 800, height = 490) {
+export default function(data, width = 500, height = 360) {
 	const padding = 50
 	const ticks = 6
 
