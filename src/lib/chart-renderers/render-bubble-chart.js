@@ -1,5 +1,6 @@
 import { pack, select, hierarchy } from 'd3'
 
+// Props to Alok K. Shukla for writing the article and to Marc for providing the link
 // source: https://bl.ocks.org/alokkshukla/3d6be4be0ef9f6977ec6718b2916d168
 // And then written it cleaner and more functional
 
