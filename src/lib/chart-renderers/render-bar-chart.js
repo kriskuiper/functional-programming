@@ -43,26 +43,30 @@ function addHorizontalAxis(svg, scale, height, padding, ticks) {
 
 function addBars(data, svg, scale, padding) {
 	const barHeight = 15
+	const barSpacing = 30
 
 	return svg.selectAll('rect')
 		.data(data)
 		.enter()
 		.append('rect')
 		.attr('x', padding * 2)
-		.attr('y', (d, i) => i * 30)
+		.attr('y', (d, i) => i * barSpacing)
 		.attr('width', (d) => scale(d.results.length - padding))
 		.attr('height', barHeight)
 		.attr('class', 'bar-chart__bar')
 }
 
 function addLabelsToBars(data, svg) {
+	const extraSpacingToCenterLabels = 10
+	const barSpacing = 30
+
 	return svg.selectAll('text')
 		.data(data)
 		.enter()
 		.append('text')
 		.text((d) => d.century)
 		.attr('x', 0)
-		.attr('y', (d, i) => (i * 30) + 10)
+		.attr('y', (d, i) => (i * barSpacing) + extraSpacingToCenterLabels)
 		.attr('dy', 0)
 		.attr('text-anchor', 'end')
 		.attr('transform', 'translate(90, 3)')
