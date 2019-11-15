@@ -6,3 +6,6 @@ node_modules
 
 # Exclude public scripts
 public/scripts
+
+# Exclude MacOS native files
+.DS_Store
