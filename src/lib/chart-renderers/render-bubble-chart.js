@@ -2,6 +2,7 @@ import { pack, select, hierarchy } from 'd3'
 
 // source: https://bl.ocks.org/alokkshukla/3d6be4be0ef9f6977ec6718b2916d168
 // And then written it cleaner and more functional
+
 export default function(data, diameter = 600) {
 	const boundaries = pack(data)
 		.size([diameter, diameter])

@@ -1,5 +1,8 @@
 import { select, scaleLinear, axisBottom, max } from 'd3'
 
+// Thanks to Martijn for providing a template
+// https://github.com/MartijnKeesmaat/functional-programming/blob/master/src/scripts/renderBarChart.js
+
 export default function(data, width = 800, height = 320) {
 	const padding = 50
 	const ticks = 6
